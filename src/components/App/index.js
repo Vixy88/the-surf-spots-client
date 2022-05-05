@@ -8,7 +8,7 @@ const App = () => {
     const fetchSurfspots = async () => {
       const response = await fetch("http://localhost:8000/surfspots/", {
         headers: {
-          Authorization: "Token 510dc64bc19021253775fef77ac69d9bb5e93bda",
+          Authorization: process.env.API,
         },
       });
       const data = await response.json(response);
