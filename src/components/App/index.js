@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import GetUserLocation from "../hooks/Geolocation";
+import GetUserLocation from "../hooks/useGeolocation";
 
 const App = () => {
   const [surfspots, setSurfspots] = useState([]);
@@ -11,7 +11,7 @@ const App = () => {
           Authorization: process.env.API,
         },
       });
-      const data = await response.json(response);
+      const data = await response.json();
       console.log(data);
       setSurfspots(data);
     };
