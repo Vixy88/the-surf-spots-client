@@ -71,9 +71,7 @@ const MapContainer = () => {
         zoom={13}
         center={currentPosition}
       >
-        {locations.map((item) => {
-          return <Marker key={item.name} position={item.location} />;
-        })}
+        <Marker position={currentPosition} />
       </GoogleMap>
     </LoadScript>
   );
