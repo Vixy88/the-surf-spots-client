@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-// import GetUserLocation from "../hooks/useGeolocation";
 import MapContainer from "../hooks/useGoogleMaps.js/GoogleMap";
 
 const App = () => {
   const [surfspots, setSurfspots] = useState([]);
+  const [showMap, setShowMap] = useState(false);
 
   useEffect(() => {
     const fetchSurfspots = async () => {
@@ -26,8 +26,11 @@ const App = () => {
           <img src="/surfspots_logo_black_bg.png" alt="The Surfspots Logo" />
         </div>
       </a>
-      {/* <GetUserLocation /> */}
-      <MapContainer />
+      <button onClick={() => setShowMap(!showMap)}>
+        {!showMap ? "View Map" : "Hide Map"}
+      </button>
+      {showMap ? <MapContainer /> : <></>}
+
       <div className="wide-container">
         {surfspots.map((surfspot) => (
           <div key={surfspot.id} className="img-container">
