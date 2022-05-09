@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
-import MapContainer from "../hooks/useGoogleMaps.js/GoogleMap";
+import ButtonToggleMapView from "../Button/ButtonViewMap";
+import DesktopHeader from "../Header/DesktopHeader";
+import DisplaySurfspotsList from "../hooks/useSurfspots/SurfspotList";
+import DesktopNav from "../Nav/DesktopNav";
 
 const App = () => {
   const [surfspots, setSurfspots] = useState([]);
-  const [showMap, setShowMap] = useState(false);
 
   useEffect(() => {
     const fetchSurfspots = async () => {
@@ -21,44 +23,11 @@ const App = () => {
 
   return (
     <div className="App">
-      <a href="#">
-        <div className="header-logo">
-          <img src="/surfspots_logo_black_bg.png" alt="The Surfspots Logo" />
-        </div>
-      </a>
-      <button onClick={() => setShowMap(!showMap)}>
-        {!showMap ? "View Map" : "Hide Map"}
-      </button>
-      {showMap ? <MapContainer /> : <></>}
+      <DesktopHeader />
+      <DesktopNav />
 
-      <div className="wide-container">
-        {surfspots.map((surfspot) => (
-          <div key={surfspot.id} className="img-container">
-            <a href="#">
-              <img src={surfspot.image} alt={surfspot.name} />
-            </a>
-            <h2>
-              {surfspot.name} {surfspot.id}
-            </h2>
-            <div>
-              <a
-                href={`https://www.google.co.uk/maps/dir//${surfspot.postcode}`}
-                target="_blank"
-                rel="noreferrer"
-              >
-                🗺 Get Directions
-              </a>
-              <a
-                href={surfspot.magic_seaweed_link}
-                target="_blank"
-                rel="noreferrer"
-              >
-                🏄🏽‍♂️ Surf Forecast
-              </a>
-            </div>
-          </div>
-        ))}
-      </div>
+      <ButtonToggleMapView />
+      <DisplaySurfspotsList />
     </div>
   );
 };
