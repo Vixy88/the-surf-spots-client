@@ -12,7 +12,6 @@ const DisplaySurfspotsList = () => {
       });
       const data = await response.json();
       setSurfspots(data);
-      console.log(data);
     };
     fetchSurfspots();
   }, []);
