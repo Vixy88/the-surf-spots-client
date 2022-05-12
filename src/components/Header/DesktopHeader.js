@@ -5,10 +5,10 @@ const DesktopHeader = () => {
         <div>
           <a href="#">
             <div className="header-logo">
-              <img
+              {/* <img
                 src="/surfspots_logo_black_bg.png"
                 alt="The Surfspots Logo"
-              />
+              /> */}
             </div>
           </a>
         </div>
