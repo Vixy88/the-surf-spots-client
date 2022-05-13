@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-const DisplaySurfspotsList = () => {
+const DisplaySurfspotsList = (props) => {
   const [surfspots, setSurfspots] = useState([]);
 
   useEffect(() => {
@@ -18,14 +18,14 @@ const DisplaySurfspotsList = () => {
 
   return (
     <>
-      <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 w-full">
+      <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 w-full px-10">
         {surfspots.map((surfspot) => (
           <div key={surfspot.name} class="relative mx-auto w-full">
             <a
               href="#"
               class="relative inline-block duration-300 ease-in-out transition-transform transform hover:-translate-y-2 w-full"
             >
-              <div class="shadow p-4 rounded-lg bg-white">
+              <div class="p-4 rounded-lg bg-white shadow-md">
                 <div class="flex justify-center relative rounded-lg overflow-hidden h-52">
                   <div class="transition-transform duration-500 transform ease-in-out hover:scale-110 w-full">
                     <div class="absolute inset-0 bg-black opacity-60">
@@ -193,7 +193,11 @@ const DisplaySurfspotsList = () => {
                         />
                       </svg>
                     </div>
-                    <a href={surfspot.magic_seaweed_link} target="_blank">
+                    <a
+                      href={surfspot.magic_seaweed_link}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
                       <p class="ml-2 text-gray-800 line-clamp-1">
                         Surf Forecast
                       </p>
@@ -228,6 +232,7 @@ const DisplaySurfspotsList = () => {
                           surfspot.address + ", " + surfspot.postcode
                         }`}
                         target="_blank"
+                        rel="noreferrer"
                       >
                         <p class="ml-2 text-gray-800 line-clamp-1">
                           Directions

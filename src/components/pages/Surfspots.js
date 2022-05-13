@@ -1,4 +1,4 @@
-import DisplaySurfspotsList from "../hooks/useSurfspots/SurfspotList";
+import DisplaySurfspotsList from "../hooks/useSurfspots/FetchSurfspots";
 import ButtonToggleMapView from "../common/button/ButtonViewMap";
 
 const SurfSpots = () => {
