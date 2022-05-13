@@ -1,15 +1,19 @@
-import ButtonToggleMapView from "../Button/ButtonViewMap";
-import DesktopHeader from "../Header/DesktopHeader";
-import DisplaySurfspotsList from "../hooks/useSurfspots/SurfspotList";
-import DesktopNav from "../Nav/DesktopNav";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Home from "../pages/Home";
+import SurfSpots from "../pages/Surfspots";
+import Layout from "../common/Layout";
 
 const App = () => {
   return (
-    <div className="App">
-      <DesktopHeader />
-      <DesktopNav />
-      <ButtonToggleMapView />
-      <DisplaySurfspotsList />
+    <div>
+      <Router>
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route path="/" element={<Home />} />
+            <Route path="/surfspots" element={<SurfSpots />} />
+          </Route>
+        </Routes>
+      </Router>
     </div>
   );
 };
