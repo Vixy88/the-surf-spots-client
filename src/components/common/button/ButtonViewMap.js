@@ -7,7 +7,7 @@ const ButtonToggleMapView = () => {
   const [showMap, setShowMap] = useState(false);
 
   return (
-    <div>
+    <div className="ml-12">
       <button onClick={() => setShowMap(!showMap)}>
         {!showMap ? "View Map" : "Hide Map"}
       </button>
