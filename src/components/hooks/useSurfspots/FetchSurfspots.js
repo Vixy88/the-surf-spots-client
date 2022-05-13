@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-const DisplaySurfspotsList = () => {
+const DisplaySurfspotsList = (props) => {
   const [surfspots, setSurfspots] = useState([]);
 
   useEffect(() => {
@@ -193,7 +193,11 @@ const DisplaySurfspotsList = () => {
                         />
                       </svg>
                     </div>
-                    <a href={surfspot.magic_seaweed_link} target="_blank">
+                    <a
+                      href={surfspot.magic_seaweed_link}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
                       <p class="ml-2 text-gray-800 line-clamp-1">
                         Surf Forecast
                       </p>
@@ -228,6 +232,7 @@ const DisplaySurfspotsList = () => {
                           surfspot.address + ", " + surfspot.postcode
                         }`}
                         target="_blank"
+                        rel="noreferrer"
                       >
                         <p class="ml-2 text-gray-800 line-clamp-1">
                           Directions

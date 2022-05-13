@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "../pages/Home";
 import SurfSpots from "../pages/Surfspots";
+import SurfspotSearchFilter from "../common/search/SearchFilter";
 import Layout from "../common/Layout";
 
 const App = () => {
@@ -10,7 +11,8 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route path="/" element={<Home />} />
-            <Route path="/surfspots" element={<SurfSpots />} />
+            <Route path="/surfspots" element={<SurfspotSearchFilter />} />
+            <Route path="/surfspots-all" element={<SurfSpots />} />
           </Route>
         </Routes>
       </Router>
