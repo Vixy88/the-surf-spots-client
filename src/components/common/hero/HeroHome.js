@@ -29,6 +29,9 @@ const HeroHome = () => {
           </div>
         </div>
       </div>
+      {/* <div>
+        <img src="/surfers.svg" />
+      </div> */}
     </main>
   );
 };

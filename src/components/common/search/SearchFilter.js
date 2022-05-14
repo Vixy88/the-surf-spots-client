@@ -1,41 +1,39 @@
 import { useState, useEffect } from "react";
+import ButtonToggleMapView from "../button/ButtonViewMap";
+import { Link } from "react-router-dom";
 
-const SurfspotSearchFilter = () => {
-  const [surfspots, setSurfspots] = useState([]);
+const SurfspotSearchFilter = ({ surfspots }) => {
+  const [, setSurfspots] = useState([]);
   // the value of the search field
   const [surfSpot, setSurfSpot] = useState("");
   // the search result
   const [foundSurfspots, setfoundSurfspots] = useState(surfspots);
 
   useEffect(() => {
-    const fetchSurfspots = async () => {
-      const response = await fetch("http://localhost:8000/surfspots/", {
-        headers: {
-          Authorization: process.env.API,
-        },
-      });
-      const data = await response.json();
-      setSurfspots(data);
-    };
-    fetchSurfspots();
-  }, []);
+    setfoundSurfspots(surfspots);
+  }, [surfspots]);
 
   const filter = (e) => {
-    const keyword = e.target.value;
+    let keyword = "";
+    if (e) {
+      keyword = e.target.value;
+    }
 
     if (keyword !== "") {
-      const results = surfspots.filter((surfspot) => {
-        return surfspot.name.toLowerCase().startsWith(keyword.toLowerCase());
+      const result = surfspots.filter((surfspot) => {
+        return surfspot.city.toLowerCase().startsWith(keyword.toLowerCase());
         // Use the toLowerCase() method to make it case-insensitive
       });
-      setfoundSurfspots(results);
+      setfoundSurfspots(result);
     } else {
       setfoundSurfspots(surfspots);
-      // If the text field is empty, show all users
+      // If the text field is empty, show all surfspots
     }
 
     setSurfSpot(keyword);
   };
+
+  // console.log(surfspots);
 
   return (
     <>
@@ -45,13 +43,16 @@ const SurfspotSearchFilter = () => {
           value={surfSpot}
           onChange={filter}
           className="block w-full text-center p-2 border-grey-200 border-2"
-          placeholder="Search by Name, City or Postcode"
+          placeholder="Search by City to Find Surfspots near you"
         />
       </div>
-      <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 w-full px-10">
+      <div>
+        <ButtonToggleMapView />
+      </div>
+      <section className="flex flex-wrap flex-row w-full px-10 justify-center">
         {foundSurfspots && foundSurfspots.length > 0 ? (
           foundSurfspots.map((surfspot) => (
-            <div key={surfspot.id} className="relative mx-auto w-full">
+            <div key={surfspot.id} className="mx-4 my-4 max-w-1/4">
               <div className="relative inline-block duration-300 ease-in-out transition-transform transform hover:-translate-y-2 w-full">
                 <div className="p-4 rounded-lg bg-white shadow-md">
                   <div className="flex justify-center relative rounded-lg overflow-hidden h-52">
@@ -274,7 +275,25 @@ const SurfspotSearchFilter = () => {
             </div>
           ))
         ) : (
-          <h1>No results found!</h1>
+          <div className="flex flex-col justify-center text-center items-center w-full">
+            <img
+              className="mx-auto h-12 w-auto"
+              src="/logo_teal.png"
+              alt="Workflow"
+            />
+            <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
+              Sign in to your account
+            </h2>
+            <p className="mt-2 text-center text-sm text-gray-600">
+              Or{" "}
+              <Link
+                to="/signup"
+                className="font-medium text-teal-500 hover:text-teal-500"
+              >
+                Register Here
+              </Link>
+            </p>
+          </div>
         )}
       </section>
     </>

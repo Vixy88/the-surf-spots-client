@@ -1,21 +1,19 @@
-/* This example requires Tailwind CSS v2.0+ */
 import { Fragment } from "react";
 import { Popover, Transition } from "@headlessui/react";
-import {
-  BookmarkAltIcon,
-  CalendarIcon,
-  ChartBarIcon,
-  CursorClickIcon,
-  MenuIcon,
-  PhoneIcon,
-  PlayIcon,
-  RefreshIcon,
-  ShieldCheckIcon,
-  SupportIcon,
-  ViewGridIcon,
-  XIcon,
-} from "@heroicons/react/outline";
+import { MenuIcon, PhoneIcon, XIcon } from "@heroicons/react/outline";
 import { ChevronDownIcon } from "@heroicons/react/solid";
+
+import {
+  GiBigWave,
+  GiShop,
+  GiForkKnifeSpoon,
+  GiCampingTent,
+  GiPlanetConquest,
+  GiSunset,
+  GiSurfBoard,
+  GiSurferVan,
+  GiSafetyPin,
+} from "react-icons/gi";
 
 const solutions = [
   {
@@ -23,32 +21,32 @@ const solutions = [
     description:
       "Get a better understanding of where your traffic is coming from.",
     href: "/surfspots",
-    icon: ChartBarIcon,
+    icon: GiBigWave,
   },
   {
     name: "Surf Shops",
     description: "Speak directly to your customers in a more meaningful way.",
     href: "#",
-    icon: CursorClickIcon,
+    icon: GiShop,
   },
   {
     name: "Restaurants",
     description: "Your customers' data will be safe and secure.",
-    href: "#",
-    icon: ShieldCheckIcon,
+    href: "/restaurants",
+    icon: GiForkKnifeSpoon,
   },
   {
     name: "Surf Camps",
     description: "Connect with third-party tools that you're already using.",
     href: "#",
-    icon: ViewGridIcon,
+    icon: GiCampingTent,
   },
   {
     name: "Surf Trips",
     description:
       "Build strategic funnels that will drive your customers to convert",
     href: "#",
-    icon: RefreshIcon,
+    icon: GiPlanetConquest,
   },
 ];
 const callsToAction = [
@@ -56,7 +54,7 @@ const callsToAction = [
     name: "World Surf League",
     href: "https://www.worldsurfleague.com/",
     target: "_blank",
-    icon: PlayIcon,
+    icon: GiSunset,
   },
   { name: "Contact Us", href: "/", icon: PhoneIcon },
 ];
@@ -65,26 +63,26 @@ const resources = [
     name: "Learn To Surf",
     description: "Surfing is for EVERYONE, start today!",
     href: "#",
-    icon: SupportIcon,
+    icon: GiSurfBoard,
   },
   {
     name: "Surf Boards",
     description: "Learn about the best and trendiest surfboards today.",
     href: "#",
-    icon: BookmarkAltIcon,
+    icon: GiSurfBoard,
   },
   {
     name: "Surf Events",
     description:
       "See what meet-ups and other events we might be planning near you.",
     href: "#",
-    icon: CalendarIcon,
+    icon: GiSurferVan,
   },
   {
     name: "Stay Safe",
     description: "Always take care of yourself and others in the water",
     href: "#",
-    icon: ShieldCheckIcon,
+    icon: GiSafetyPin,
   },
 ];
 const recentPosts = [
@@ -213,10 +211,11 @@ export default function DesktopHeader() {
               About
             </a>
             <a
-              href="#"
+              href="https://github.com/Vixy88/surfspots-python-django"
+              target="_blank"
               className="text-base font-medium text-gray-500 hover:text-gray-900"
             >
-              Docs
+              API Doc
             </a>
 
             <Popover className="relative">
@@ -383,14 +382,7 @@ export default function DesktopHeader() {
                   href="#"
                   className="text-base font-medium text-gray-900 hover:text-gray-700"
                 >
-                  Pricing
-                </a>
-
-                <a
-                  href="#"
-                  className="text-base font-medium text-gray-900 hover:text-gray-700"
-                >
-                  Docs
+                  API Docs
                 </a>
                 {resources.map((item) => (
                   <a

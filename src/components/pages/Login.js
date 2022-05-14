@@ -13,7 +13,10 @@ function LoginUser() {
   const onLogin = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("http://localhost:8000/users/", formData);
+      const res = await axios.post(
+        "http://localhost:8000/users/login/",
+        formData
+      );
       console.log(res);
       if (res.status === 200) {
         setUserLoggedIn(true);

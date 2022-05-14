@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "../pages/Home";
 import SignUp from "../pages/SignUp";
+import Restaurants from "../pages/Restaurants";
 import LoginUser from "../pages/Login";
 import SurfSpots from "../pages/Surfspots";
 import SurfspotSearchFilter from "../common/search/SearchFilter";
@@ -31,10 +32,14 @@ const App = () => {
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<LoginUser />} />
             <Route path="/signup" element={<SignUp />} />
-            <Route path="/surfspots" element={<SurfspotSearchFilter />} />
+            <Route path="/restaurants" element={<Restaurants />} />
+            <Route
+              path="/surfspots"
+              element={<SurfspotSearchFilter surfspots={surfspots} />}
+            />
             <Route
               path="/surfspots-all"
-              element={<SurfSpots data={surfspots} />}
+              element={<SurfSpots surfspots={surfspots} />}
             />
           </Route>
         </Routes>
