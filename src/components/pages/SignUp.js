@@ -103,14 +103,14 @@ function RegisterUser() {
           </Link>
         </p>
       </div>
-      {userCreated ? (
+      {/* {userCreated ? (
         <div>Your new user has been created! 🎯 </div>
       ) : (
         renderRegForm
       )}
       {userCreated === false && (
         <div className="failure">User couldn't be created.</div>
-      )}
+      )} */}
     </div>
   );
 }
