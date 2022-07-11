@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "../pages/Home";
 import SignUp from "../pages/SignUp";
+import SignUpNew from "../pages/SignUpNew";
 import Restaurants from "../pages/Restaurants";
 import LoginUser from "../pages/Login";
 import SurfSpots from "../pages/Surfspots";
@@ -11,18 +12,18 @@ import Layout from "../common/Layout";
 const App = () => {
   const [surfspots, setSurfspots] = useState([]);
 
-  useEffect(() => {
-    const fetchSurfspots = async () => {
-      const response = await fetch("http://localhost:8000/surfspots/", {
-        headers: {
-          Authorization: process.env.API,
-        },
-      });
-      const data = await response.json();
-      setSurfspots(data);
-    };
-    fetchSurfspots();
-  }, []);
+  // useEffect(() => {
+  //   const fetchSurfspots = async () => {
+  //     const response = await fetch("http://localhost:8000/surfspots/", {
+  //       headers: {
+  //         Authorization: process.env.API,
+  //       },
+  //     });
+  //     const data = await response.json();
+  //     setSurfspots(data);
+  //   };
+  //   fetchSurfspots();
+  // }, []);
 
   return (
     <div>
@@ -31,7 +32,7 @@ const App = () => {
           <Route path="/" element={<Layout />}>
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<LoginUser />} />
-            <Route path="/signup" element={<SignUp />} />
+            <Route path="/signup" element={<SignUpNew />} />
             <Route path="/restaurants" element={<Restaurants />} />
             <Route
               path="/surfspots"

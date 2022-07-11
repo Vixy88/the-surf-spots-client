@@ -396,15 +396,18 @@ export default function DesktopHeader() {
               </div>
               <div>
                 <a
-                  href="#"
+                  href="/signup"
                   className="w-full flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-yellow-500 hover:opacity-70"
                 >
                   Sign up
                 </a>
                 <p className="mt-6 text-center text-base font-medium text-gray-500">
                   Existing customer?{" "}
-                  <a href="#" className="text-teal-500 hover:text-teal-500">
-                    Sign in
+                  <a
+                    href="/login"
+                    className="text-teal-500 hover:text-teal-500"
+                  >
+                    Log In
                   </a>
                 </p>
               </div>
