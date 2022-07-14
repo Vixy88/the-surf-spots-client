@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { supabase } from "../../supabaseClient";
 import Home from "../pages/Home";
 import SignUp from "../pages/SignUp";
 import SignUpNew from "../pages/SignUpNew";
@@ -24,6 +25,16 @@ const App = () => {
   //   };
   //   fetchSurfspots();
   // }, []);
+
+  useEffect(() => {
+    const fetchSurfSpots = async () => {
+      const { data, error } = await supabase
+        .from("surfspots")
+        .select("name, description");
+      setSurfspots(data);
+    };
+    fetchSurfSpots();
+  });
 
   return (
     <div>
