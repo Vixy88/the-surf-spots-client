@@ -1,17 +1,12 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import ButtonToggleMapView from "../button/ButtonViewMap";
 import { Link } from "react-router-dom";
 
 const SurfspotSearchFilter = ({ surfspots }) => {
-  const [, setSurfspots] = useState([]);
   // the value of the search field
   const [surfSpot, setSurfSpot] = useState("");
   // the search result
   const [foundSurfspots, setfoundSurfspots] = useState(surfspots);
-
-  useEffect(() => {
-    setfoundSurfspots(surfspots);
-  }, [surfspots]);
 
   const filter = (e) => {
     let keyword = "";
@@ -29,11 +24,8 @@ const SurfspotSearchFilter = ({ surfspots }) => {
       setfoundSurfspots(surfspots);
       // If the text field is empty, show all surfspots
     }
-
     setSurfSpot(keyword);
   };
-
-  // console.log(surfspots);
 
   return (
     <>
@@ -51,14 +43,14 @@ const SurfspotSearchFilter = ({ surfspots }) => {
       </div>
       <section className="flex flex-wrap flex-row w-full px-10 justify-center">
         {foundSurfspots && foundSurfspots.length > 0 ? (
-          foundSurfspots.map((surfspot) => (
+          surfspots.map((surfspot) => (
             <div key={surfspot.id} className="mx-4 my-4 max-w-1/4">
               <div className="relative inline-block duration-300 ease-in-out transition-transform transform hover:-translate-y-2 w-full">
                 <div className="p-4 rounded-lg bg-white shadow-md">
                   <div className="flex justify-center relative rounded-lg overflow-hidden h-52">
                     <div className="transition-transform duration-500 transform ease-in-out hover:scale-110 w-full">
                       <div className="absolute inset-0 bg-black opacity-60">
-                        <img src={surfspot.image} alt={surfspot.name} />
+                        <img src={surfspot.image_profile} alt={surfspot.name} />
                       </div>
                     </div>
 
@@ -145,9 +137,7 @@ const SurfspotSearchFilter = ({ surfspots }) => {
                           d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
                         />
                       </svg>
-                      <span className="mt-2 xl:mt-0">
-                        {surfspot.restaurants_nearby.length + " Restaurants"}
-                      </span>
+                      <span className="mt-2 xl:mt-0">9 Restaurants</span>
                     </div>
                     <div className="inline-flex flex-col xl:flex-row xl:items-center text-gray-800">
                       <svg
