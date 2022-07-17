@@ -32,6 +32,7 @@ const App = () => {
         .from("surfspots")
         .select("name, description");
       setSurfspots(data);
+      // console.log(surfspots);
     };
     fetchSurfSpots();
   });

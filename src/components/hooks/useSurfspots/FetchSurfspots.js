@@ -1,7 +1,11 @@
 const DisplaySurfspotsList = (props) => {
   const surfspots = [props.data];
   console.log(surfspots);
-  return <></>;
+  return (
+    <>
+      <div>{surfspots.name}</div>
+    </>
+  );
 };
 
 export default DisplaySurfspotsList;
