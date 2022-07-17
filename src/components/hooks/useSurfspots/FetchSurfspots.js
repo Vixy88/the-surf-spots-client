@@ -1,5 +1,5 @@
-const DisplaySurfspotsList = (props) => {
-  const surfspots = [props.data];
+const DisplaySurfspotsList = (surfspots) => {
+  // const surfspotsList = data;
   console.log(surfspots);
   return (
     <>

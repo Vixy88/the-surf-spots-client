@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { supabase } from "../../supabaseClient";
 import Home from "../pages/Home";
-import SignUp from "../pages/SignUp";
+// import SignUp from "../pages/SignUp";
 import SignUpNew from "../pages/SignUpNew";
 import Restaurants from "../pages/Restaurants";
 import LoginUser from "../pages/Login";
@@ -13,29 +13,18 @@ import Layout from "../common/Layout";
 const App = () => {
   const [surfspots, setSurfspots] = useState([]);
 
-  // useEffect(() => {
-  //   const fetchSurfspots = async () => {
-  //     const response = await fetch("http://localhost:8000/surfspots/", {
-  //       headers: {
-  //         Authorization: process.env.API,
-  //       },
-  //     });
-  //     const data = await response.json();
-  //     setSurfspots(data);
-  //   };
-  //   fetchSurfspots();
-  // }, []);
-
   useEffect(() => {
     const fetchSurfSpots = async () => {
-      const { data, error } = await supabase
-        .from("surfspots")
-        .select("name, description");
-      setSurfspots(data);
-      // console.log(surfspots);
+      try {
+        const { data, error } = await supabase.from("surfspots").select();
+        setSurfspots(data);
+      } catch (error) {
+        alert(error.error_description || error.message);
+      }
     };
     fetchSurfSpots();
-  });
+    console.log("Surfspots have been fetched");
+  }, []);
 
   return (
     <div>
