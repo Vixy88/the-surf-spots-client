@@ -49,10 +49,7 @@ export default function Auth() {
         {loading ? (
           "Sending magic link..."
         ) : (
-          <form
-            onSubmit={handleLogin}
-            className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col"
-          >
+          <form onSubmit={handleLogin}>
             <div className="mb-3">
               <label
                 htmlFor="email"

@@ -16,22 +16,19 @@ const HeroHome = () => {
               href="/surfspots"
               className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-teal-600 hover:bg-teal-700 md:py-4 md:text-lg md:px-10"
             >
-              Surf Spots Near You
+              Surf Spots Near You 🏄🏻‍♂️ (Beta)
             </a>
           </div>
           <div className="mt-3 sm:mt-0 sm:ml-3">
             <a
-              href="/surfspots"
+              href="/restaurants"
               className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-teal-600 bg-indigo-100 hover:bg-indigo-200 md:py-4 md:text-lg md:px-10"
             >
-              Restaurants Near You
+              Restaurants Near You 🌮 (Coming Soon)
             </a>
           </div>
         </div>
       </div>
-      {/* <div>
-        <img src="/surfers.svg" />
-      </div> */}
     </main>
   );
 };
