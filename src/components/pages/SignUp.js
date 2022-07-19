@@ -1,76 +1,47 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import axios from "axios";
+import Form from "../common/ui/form/Form";
 
 function RegisterUser() {
-  const [formData, setFormData] = useState({});
-  const [userCreated, setUserCreated] = useState(null);
+  // const [formData, setFormData] = useState({});
+  // const [userCreated, setUserCreated] = useState(null);
 
-  const onChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  const onSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      const res = await axios.post(
-        "http://localhost:8000/users/register/",
-        {
-          headers: {
-            Authorization: process.env.API,
-          },
-        },
-        formData
-      );
-      console.log(res);
-      if (res.status === 201) {
-        setUserCreated(true);
-      }
-    } catch (e) {
-      console.log(e);
-      setUserCreated(false);
-    }
-  };
+  // const onChange = (e) => {
+  //   setFormData({ ...formData, [e.target.name]: e.target.value });
+  // };
 
   const renderRegForm = (
-    <form
-      onSubmit={onSubmit}
-      className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col justify-center"
-    >
+    <Form onSubmit={onSubmit}>
       <div className="mb-3">
-        <input
+        <Input
           type="text"
           placeholder="First name"
           name="firstName"
           onChange={onChange}
-          className="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker"
         />
       </div>
       <div className="mb-3">
-        <input
+        <Input
           type="text"
           placeholder="Last name"
           name="lastName"
           onChange={onChange}
-          className="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker"
         />
       </div>
       <div className="mb-3">
-        <input
+        <Input
           type="email"
           placeholder="Email"
           name="eMail"
           onChange={onChange}
-          className="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker"
         />
       </div>
       <div className="mb-3">
-        <input
+        <Input
           type="password"
           placeholder="Password"
           name="password"
           onChange={onChange}
-          className="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker"
         />
       </div>
       <button
@@ -79,7 +50,7 @@ function RegisterUser() {
       >
         Register
       </button>
-    </form>
+    </Form>
   );
 
   return (
@@ -103,14 +74,6 @@ function RegisterUser() {
           </Link>
         </p>
       </div>
-      {/* {userCreated ? (
-        <div>Your new user has been created! 🎯 </div>
-      ) : (
-        renderRegForm
-      )}
-      {userCreated === false && (
-        <div className="failure">User couldn't be created.</div>
-      )} */}
     </div>
   );
 }

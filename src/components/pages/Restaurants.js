@@ -17,7 +17,7 @@ const Restaurants = () => {
             </p>
           </div>
           <div class="flex flex-wrap mt-10 justify-center">
-            <div class="m-3">
+            {/* <div class="m-3">
               <a
                 href="https://www.facebook.com/QuickToolz"
                 title="Quicktoolz On Facebook"
@@ -25,17 +25,17 @@ const Restaurants = () => {
               >
                 <span class="mx-auto">Facebook</span>
               </a>
-            </div>
+            </div> */}
             <div class="m-3">
               <a
-                href="https://twitter.com/quicktoolz"
+                href="https://twitter.com/TheSurfSpots"
                 title="Quicktoolz On Twitter"
-                class="md:w-32 bg-white tracking-wide text-gray-800 font-bold rounded border-2 border-teal-500 hover:border-teal-500 hover:bg-teal-500 hover:text-white shadow-md py-2 px-6 inline-flex items-center"
+                class="md:w-32 bg-white tracking-wide text-gray-800 font-bold rounded border-2 border-blue-400 hover:border-blue-400 hover:bg-blue-400 hover:text-white shadow-md py-2 px-6 inline-flex items-center"
               >
                 <span class="mx-auto">Twitter</span>
               </a>
             </div>
-            <div class="m-3">
+            {/* <div class="m-3">
               <a
                 href="https://pinterest.com/quicktoolz/"
                 title="Quicktoolz On Pinterest"
@@ -52,7 +52,7 @@ const Restaurants = () => {
               >
                 <span class="mx-auto">Reddit</span>
               </a>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
