@@ -282,7 +282,6 @@ const SurfspotSearchFilter = ({ surfspots }) => {
             </Link>
           </p>
         </div>
-        )}
       </section>
     </>
   );
