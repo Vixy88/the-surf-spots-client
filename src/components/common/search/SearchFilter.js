@@ -3,44 +3,8 @@ import ButtonToggleMapView from "../button/ButtonViewMap";
 import { Link } from "react-router-dom";
 
 const SurfspotSearchFilter = ({ surfspots }) => {
-  // the value of the search field
-  const [surfSpot, setSurfSpot] = useState("");
-  // the search result
-  const [foundSurfspots, setfoundSurfspots] = useState(surfspots);
-
-  const filter = (e) => {
-    let keyword = "";
-    if (e) {
-      keyword = e.target.value;
-    }
-
-    if (keyword !== "") {
-      const result = surfspots.filter((surfspot) => {
-        return surfspot.city.toLowerCase().startsWith(keyword.toLowerCase());
-        // Use the toLowerCase() method to make it case-insensitive
-      });
-      setfoundSurfspots(result);
-    } else {
-      setfoundSurfspots(surfspots);
-      // If the text field is empty, show all surfspots
-    }
-    setSurfSpot(keyword);
-  };
-
   return (
     <>
-      {/* <div className="m-2 flex flex-row text-center justify-center px-10">
-        <input
-          type="search"
-          value={surfSpot}
-          onChange={filter}
-          className="block w-full text-center p-2 border-grey-200 border-2"
-          placeholder="Search by City to Find Surfspots near you"
-        />
-      </div>
-      <div>
-        <ButtonToggleMapView />
-      </div> */}
       <section className="flex flex-wrap flex-row w-full px-10 justify-center">
         {surfspots.map((surfspot) => (
           <div key={surfspot.id} className="mx-4 my-4 max-w-1/4">
@@ -282,7 +246,6 @@ const SurfspotSearchFilter = ({ surfspots }) => {
             </Link>
           </p>
         </div>
-        )}
       </section>
     </>
   );
