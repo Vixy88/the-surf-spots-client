@@ -5,6 +5,7 @@ import Home from "../pages/Home";
 import RegisterSurfspot from "../pages/RegisterSurfspot";
 import SignUpNew from "../pages/SignUpNew";
 import Restaurants from "../pages/Restaurants";
+import SearchInput from "../common/search/SearchInput";
 import SurfSpots from "../pages/Surfspots";
 import SurfspotSearchFilter from "../common/search/SearchFilter";
 import Layout from "../common/Layout";
@@ -41,7 +42,7 @@ const App = () => {
             <Route path="/register-surfspot" element={<RegisterSurfspot />} />
             <Route
               path="/surfspots-all"
-              element={<SurfSpots surfspots={surfspots} />}
+              element={<SearchInput surfspots={surfspots} />}
             />
           </Route>
         </Routes>
