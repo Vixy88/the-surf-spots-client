@@ -2,26 +2,84 @@ import { useEffect, useState } from "react";
 
 const SearchInput = ({ surfspots }) => {
   const [query, setQuery] = useState("");
-  const [searchParam] = useState("name", "country", "city", "postcode");
-  const [error, setError] = useState(null);
-  const [isLoaded, setIsLoaded] = useState(false);
-  const [surfSpots, setSurfSpots] = useState([]);
+  const [searchParam] = useState(["name", "country", "city", "postcode"]);
+  const [filterParam, setFilterParam] = useState(["All"]);
 
-  useEffect(() => {}, []);
+  function search(surfspots) {
+    return surfspots.filter((surfspot) => {
+      if (surfspot.city == filterParam) {
+        return searchParam.some((newSurfspot) => {
+          return (
+            surfspot[newSurfspot]
+              .toString()
+              .toLowerCase()
+              .indexOf(query.toLowerCase()) > -1
+          );
+        });
+      } else if (filterParam == "All") {
+        return searchParam.some((newSurfspot) => {
+          return (
+            surfspot[newSurfspot]
+              .toString()
+              .toLowerCase()
+              .indexOf(query.toLowerCase()) > -1
+          );
+        });
+      }
+    });
+  }
 
-  if (error) {
-    return <>Error: {error.message}</>;
-  } else if (!isLoaded) {
-    return <div>Loading...</div>;
-  } else {
-    return (
+  return (
+    <>
+      <div>
+        <label htmlFor="search-form">
+          <input
+            type="search"
+            name="search-form"
+            id="search-form"
+            placeholder="Search for..."
+            value={query}
+            /*
+                // set the value of our useState q
+                //  anytime the user types in the search box
+                */
+            onChange={(e) => setQuery(e.target.value)}
+          />
+          <span>Search countries here</span>
+        </label>
+        <div>
+          <select
+            /* 
+//                         here we create a basic select input
+//                     we set the value to the selected value 
+//                     and update the setC() state every time onChange is called
+                    */
+            onChange={(e) => {
+              setFilterParam(e.target.value);
+            }}
+            className="custom-select"
+            aria-label="Filter Countries By Countries"
+          >
+            <option value="All">Filter By City</option>
+            <option value="Burgau">Burgau</option>
+            <option value="Lisbon">Lisbon</option>
+            <option value="Porto">Porto</option>
+            <option value="Carrapaterin">Carrapaterin</option>
+            <option value="Omado">Omado</option>
+          </select>
+          <span className="focus"></span>
+        </div>
+      </div>
       <ul>
-        {surfSpots.map((surfSpot) => (
-          <li key={item.id}>{surfSpot.name}</li>
+        {search(surfspots).map((surfSpot) => (
+          <li key={surfSpot.id}>
+            {surfSpot.name} {surfSpot.country} {surfSpot.city}{" "}
+            {surfSpot.postcode}
+          </li>
         ))}
       </ul>
-    );
-  }
+    </>
+  );
 };
 
 export default SearchInput;
