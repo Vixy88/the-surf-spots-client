@@ -3,10 +3,100 @@ import ButtonToggleMapView from "../button/ButtonViewMap";
 import { Link } from "react-router-dom";
 
 const SurfspotSearchFilter = ({ surfspots }) => {
+  const [query, setQuery] = useState("");
+  const [searchParam] = useState(["name", "country", "city", "postcode"]);
+  const [filterParam, setFilterParam] = useState(["All"]);
+
+  function search(surfspots) {
+    return surfspots.filter((surfspot) => {
+      if (
+        surfspot.name == filterParam ||
+        surfspot.country == filterParam ||
+        surfspot.city == filterParam ||
+        surfspot.postcode == filterParam
+      ) {
+        return searchParam.some((newSurfspot) => {
+          return (
+            surfspot[newSurfspot]
+              .toString()
+              .toLowerCase()
+              .indexOf(query.toLowerCase()) > -1
+          );
+        });
+      } else if (filterParam == "All") {
+        return searchParam.some((newSurfspot) => {
+          return (
+            surfspot[newSurfspot]
+              .toString()
+              .toLowerCase()
+              .indexOf(query.toLowerCase()) > -1
+          );
+        });
+      }
+    });
+  }
   return (
     <>
+      <div className="mt-5 flex flex-col justify-center items-center">
+        <label
+          htmlFor="search-form"
+          className="block text-grey-darker text-sm font-bold mb-2"
+        >
+          <div className="mb-3">
+            <span className="block xl:inline">
+              Search By Name, Country, City or Postcode of your Favourite Surf
+              Spot
+            </span>
+            <input
+              type="search"
+              name="search-form"
+              id="search-form"
+              className="shadow appearance-none border rounded w-full py-3 px-3 text-grey-darker"
+              placeholder="Search for..."
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+            />
+          </div>
+        </label>
+        <div className="flex flex-row">
+          <div className="mr-3">
+            <select
+              onChange={(e) => {
+                setFilterParam(e.target.value);
+              }}
+              className="border-gray-30 rounded-lg block w-full p-2.5 8 py-3 border border-transparent text-base font-medium text-white bg-teal-600 hover:bg-teal-700"
+              aria-label="Filter Surfspots By City"
+            >
+              <option value="All">Filter By City</option>
+              <option value="Burgau">Burgau</option>
+              <option value="Carvoeiro">Carvoeiro</option>
+              <option value="Carrapateira">Carrapateira</option>
+              <option value="Lisbon">Lisbon (Coming Soon)</option>
+              <option value="Porto">Porto (Coming Soon)</option>
+            </select>
+          </div>
+          <div>
+            <select
+              onChange={(e) => {
+                setFilterParam(e.target.value);
+              }}
+              className="border-gray-30 rounded-lg block w-full p-2.5 8 py-3 border border-transparent text-base font-medium text-white bg-teal-600 hover:bg-teal-700"
+              aria-label="Filter Surf Spots By Countries"
+            >
+              <option value="All">Filter By Country</option>
+              <option value="Portugal">Portugal</option>
+              <option value="United Kingdom">
+                United Kingdom (Coming Soon)
+              </option>
+              <option value="France">France (Coming Soon)</option>
+              <option value="Spain">Spain (Coming Soon)</option>
+              <option value="United States">United States (Coming Soon)</option>
+            </select>
+          </div>
+        </div>
+      </div>
       <section className="flex flex-wrap flex-row w-full px-10 justify-center">
-        {surfspots.map((surfspot) => (
+        {search(surfspots).map((surfspot) => (
           <div key={surfspot.id} className="mx-4 my-4 max-w-1/4">
             <div className="relative inline-block duration-300 ease-in-out transition-transform transform hover:-translate-y-2 w-full">
               <div className="p-4 rounded-lg bg-white shadow-md">

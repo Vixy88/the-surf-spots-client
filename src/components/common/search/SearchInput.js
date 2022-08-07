@@ -39,21 +39,12 @@ const SearchInput = ({ surfspots }) => {
             id="search-form"
             placeholder="Search for..."
             value={query}
-            /*
-                // set the value of our useState q
-                //  anytime the user types in the search box
-                */
             onChange={(e) => setQuery(e.target.value)}
           />
           <span>Search countries here</span>
         </label>
         <div>
           <select
-            /* 
-//                         here we create a basic select input
-//                     we set the value to the selected value 
-//                     and update the setC() state every time onChange is called
-                    */
             onChange={(e) => {
               setFilterParam(e.target.value);
             }}
