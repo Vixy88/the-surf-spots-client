@@ -7,6 +7,7 @@ import SignUpNew from "../pages/SignUpNew";
 import Restaurants from "../pages/Restaurants";
 import SearchInput from "../common/search/SearchInput";
 import SurfSpots from "../pages/Surfspots";
+import BoardCalculator from "../pages/BoardCalculator";
 import SurfspotSearchFilter from "../common/search/SearchFilter";
 import Layout from "../common/Layout";
 
@@ -35,6 +36,7 @@ const App = () => {
             <Route path="/login" element={<SignUpNew />} />
             <Route path="/signup" element={<SignUpNew />} />
             <Route path="/restaurants" element={<Restaurants />} />
+            <Route path="/surfboard" element={<BoardCalculator />} />
             <Route
               path="/surfspots"
               element={<SurfspotSearchFilter surfspots={surfspots} />}
